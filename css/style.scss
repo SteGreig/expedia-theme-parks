@@ -1,0 +1,1036 @@
+
+@import '_partials/_media-queries.scss';
+@import '_partials/_flexbox.scss';
+
+
+/*------------------------------------------------
+	GENERALS / DEFAULTS
+-------------------------------------------------*/
+
+$darkBlue: #00355f;
+$yellow: #ffcb00;
+$lightBlue: #3c9ae4;
+
+.theme-parks-wrap *, .theme-parks-wrap *:after, .theme-parks-wrap *:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+body {
+	background: url(../images/bodybg.jpg) top center no-repeat #333 fixed;
+	background-size: cover;
+	min-height: 100vh;
+	font-family: Source Sans Pro, sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	padding-bottom: 40px;
+	color: #fff;
+}
+
+.container {
+	width: 100%;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 0 15px;
+
+	@include bp1000 {
+		padding: 0;
+	}
+}
+
+img {
+	max-width: 100%;
+}
+
+ul {
+	padding: 0;
+	list-style: none;
+}
+
+
+
+/*------------------------------------------------
+	HEADER
+-------------------------------------------------*/
+
+header {
+	text-align: center;
+	font-size: 1em;
+	margin: 20px 0;
+
+	p {
+		max-width: 700px;
+		margin: 10px auto 0;
+		font-size: .9em;
+
+		a {
+			color: $yellow;
+		}
+	}
+
+	.logo {
+		max-width: 222px;
+		margin: 0 0 10px;
+	}
+
+	@include bp480 {
+		margin: 20px 0 30px;
+
+		.logo {
+			margin: 0 0 20px;
+		}
+	}
+
+	@include bp750 {
+		p {
+			max-width: 530px;
+		}
+	}
+
+	@include bp850 {
+		margin-bottom: 40px;
+
+		p {
+			line-height: 1.5;
+			font-size: 1em;
+		}
+
+		.logo {
+			margin: 10px 0 30px;
+		}
+	}
+
+	@include bp950 {
+		p {
+			max-width: 650px;
+		}
+	}
+
+	@include bp1200 {
+		p {
+			max-width: 750px;
+		}
+	}
+}
+
+h1 {
+	font-weight: 300;
+	font-size: 1.4em;
+	text-transform: uppercase;
+	line-height: 1.1;
+
+	strong {
+		display: block;
+		font-weight: 900;
+		font-size: 1.2em;
+		color: $yellow;
+	}
+
+	@include bp600 {
+		font-size: 1.6em;
+	}
+
+	@include bp850 {
+		font-size: 1.8em;
+	}
+}
+
+
+
+/*------------------------------------------------
+	THEME PARKS LIST / FILTERS
+-------------------------------------------------*/
+
+.filters {
+	margin-bottom: 15px;
+
+	fieldset {
+		position: relative;
+		padding: 0;
+		border: none;
+		margin-bottom: 5px;
+	}
+
+	select {
+		width: 100%;
+		padding: 10px;
+		background: url(../images/select-bg.jpg) right no-repeat #fff;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	    appearance: none;
+		border: none;
+		border-radius: 0;
+		font: .9em Roboto;
+		color: $darkBlue;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #f8f8f8;
+		}
+	}
+
+	select::-ms-expand {
+	    display: none;
+	}
+
+	@include bp600 {
+		fieldset {
+			float: left;
+			width: 32%;
+			margin-right: 2%;
+		}
+
+		fieldset:last-child {
+			margin-right: 0;
+		}
+	}
+
+	@include bp1000 {
+		float: left;
+		width: 100%;
+	}
+
+}
+
+/* Theme Parks List */
+.theme-parks {
+	padding-bottom: 120px;
+	float: left;
+	width: 100%;
+
+	li {
+		text-align: center;
+		float: left;
+		width: 100%;
+		margin-top: 30px;
+
+		@include bp600 {
+			@include flexbox;
+			@include flex-wrap(wrap);
+		}
+	}
+
+	.m20 { margin-top: 20px; }
+	.m30 { margin-top: 30px; }
+	.m40 { margin-top: 40px; }
+	.m50 { margin-top: 50px; }
+	.m60 { margin-top: 60px; }
+
+	.transp-img {
+
+		.img-wrap {
+			background: $darkBlue;
+			height: 148px;
+			overflow: visible;
+			top: auto;
+		}
+
+		img {
+			width: auto;
+			top: auto;
+			bottom: 0;
+			-webkit-transform: translateX(-50%);
+			transform: translateX(-50%);
+		}
+
+		@include bp600 {
+
+			.img-wrap {
+				height: auto;
+			}
+		}
+	}
+}
+
+.img-wrap {
+	background: transparent;
+	position: relative;
+	height: 138px;
+	overflow: hidden;
+
+	img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		width: 100%;
+	}
+
+	.tp3 & img {
+		left: 55%;
+	}
+
+	.tp4 & img {
+		left: 60%;
+	}
+
+	@include bp600 {
+		width: 50%;
+		float: left;
+		height: auto;
+	}
+
+	@include bp850 {
+		width: 37%;
+	}
+}
+
+.name-wrap {
+	background: #fff;
+	color: $darkBlue;
+	padding: 15px;
+
+	.city {
+		font-style: italic;
+		font-weight: 400;
+	}
+
+	button {
+		cursor: pointer;
+		padding: 9px 55px 9px 15px;
+		background: $darkBlue;
+		color: #fff;
+		border: none;
+		font: 300 .95em Source Sans Pro;
+		position: relative;
+		margin-top: 12px;
+		display: inline-block;
+
+		&:after {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			background: $yellow;
+			color: $darkBlue;
+			content: "\f055";
+			font: 1.4em FontAwesome;
+			padding: 9px 10px 10px;
+		}
+
+		&:hover {
+			background: lighten($darkBlue, 5%);
+
+			&:after {
+				background: lighten($yellow, 5%);
+			}
+		}
+	}
+
+	@include bp600 {
+		width: 50%;
+		float: left;
+		@include flexbox;
+		@include flex-wrap(wrap);
+		@include align-content(center);
+		@include justify-content(center);
+		padding: 20px;
+
+		.city {
+			width: 100%;
+		}
+	}
+
+	@include bp850 {
+		width: 35%;
+		text-align: left;
+		@include justify-content(flex-start);
+		padding: 23px;
+
+		h3 {
+			font-size: 1.2em;
+		}
+	}
+}
+
+.info-wrap {
+	background: $yellow;
+	color: $darkBlue;
+	padding: 17px 15px 15px;
+
+	.distance {
+		color: #fff;
+		background: $darkBlue;
+		padding: 5px 10px;
+		border-radius: 5px;
+		font-size: .85em;
+		display: inline-block;
+		position: relative;
+		margin-bottom: 10px;
+
+		strong {
+			font-size: 1.3em;
+		}
+
+		&:before {
+			position: absolute;
+			left: -10px;
+			top: 7px;
+			content: "";
+			border-right: 10px solid $darkBlue;
+			border-top: 8px solid transparent;
+			border-bottom: 8px solid transparent;
+		}
+	}
+
+	.admission {
+		font-weight: 500;
+		font-size: .85em;
+
+		strong {
+			font-size: 1.2em;
+		}
+	}
+
+	@include bp600 {
+		width: 100%;
+		float: left;
+	}
+
+	@include bp850 {
+		width: 28%;
+		@include flexbox;
+		@include flex-wrap(wrap);
+		@include align-content(center);
+		@include justify-content(center);
+	}
+}
+
+
+
+/*------------------------------------------------
+	THEME PARK INFO POPUPS
+-------------------------------------------------*/
+
+.tp-info {
+	position: fixed;
+	top: 100%;
+	left: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(#ededed, .98);
+	visibility: hidden;
+	padding: 15px 15px 85px;
+	transition: .5s;
+	overflow: scroll;
+	box-shadow: 0 0 60px rgba(#000, .9);
+	color: $darkBlue;
+	z-index: 100;
+	font-size: .95em;
+	line-height: 1.4;
+	font-weight: 400;
+
+	&.show {
+		visibility: visible;
+		top: 0;
+	}
+
+	/*
+	&:nth-child(1) {
+		display: block;
+		visibility: visible;
+		top: 0;
+		top: 5%;
+	} */
+
+	h2 {
+		color: $darkBlue;
+		font-size: 2em;
+		line-height: 1.1;
+		padding-bottom: 10px;
+		padding-right: 60px;
+		border-bottom: 1px solid rgba($darkBlue, .1);
+		margin-bottom: 20px;
+
+		span {
+			font-size: .6em;
+			font-style: italic;
+			font-weight: 300;
+			display: block;
+			margin-top: 5px;
+		}
+	}
+
+	.close {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		font-size: 2em;
+		background: $darkBlue;
+		color: #fff;
+		border-radius: 50%;
+		width: 60px;
+		height: 60px;
+		text-align: center;
+		padding-top: 14px;
+		cursor: pointer;
+
+		&:hover {
+			background: lighten($darkBlue, 5%);
+		}
+	}
+
+	.top {
+		margin-top: 20px;
+		@include flexbox;
+		@include flex-wrap(wrap);
+	}
+
+	.top-img-wrap {
+		text-align: center;
+		width: 100%;
+		max-height: 350px;
+		min-height: 220px;
+		overflow: hidden;
+		float: left;
+		width: 100%;
+		@include flexbox;
+	}
+
+	img {
+		display: block;
+	}
+
+	h3 {
+		font-size: 1.1em;
+		font-weight: 600;
+		margin-bottom: 5px;
+		color: $darkBlue;
+	}
+
+	p + p {
+		margin-top: 10px;
+	}
+
+	p + h3,
+	table + h3 {
+		margin-top: 15px;
+	}
+
+	strong {
+		font-weight: 700;
+	}
+
+	.opening, .fees, .find {
+		margin-top: 15px;
+		float: left;
+		width: 100%;
+	}
+
+	.quote {
+		float: left;
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	table {
+		width: 100%;
+		border-spacing: 0;
+	}
+
+	tr {
+	}
+
+	td {
+		padding: 3px 0;
+
+		&:last-child {
+			padding-left: 5px;
+			font-weight: 600;
+		}
+	}
+
+	.slide-downs {
+		margin-top: 15px;
+		float: left;
+		width: 100%;
+	}
+
+	.slide-downs > div {
+		display: none;
+		padding: 15px;
+		background: #fff;
+		margin-bottom: 5px;
+
+		h4 {
+			font-weight: 600;
+			font-size: 1.1em;
+			border-bottom: 1px solid #ccc;
+		    margin-bottom: 13px;
+		    padding-bottom: 5px;
+		}
+
+		* + h4 {
+			margin-top: 25px;
+		}
+
+		a {
+			font-weight: 500;
+			color: $darkBlue;
+		}
+	}
+
+	.slide-trigger {
+		background: $yellow;
+		padding: 5px 10px;
+		cursor: pointer;
+		position: relative;
+		color: $darkBlue;
+
+		&:hover {
+			background: lighten($yellow, 7%);
+		}
+
+		&:after {
+			content: "\f0fe";
+			font: 1.1em FontAwesome;
+			position: absolute;
+			right: 10px;
+			top: 7px;
+		}
+
+		&.active:after {
+			content: "\f146";
+		}
+	}
+
+	iframe {
+		width: 100%;
+		padding: 7px;
+		background: #fff;
+		margin-bottom: 10px;
+		border: none;
+	}
+
+	.directions-wrap {
+		margin-bottom: 25px;
+	}
+
+	blockquote {
+		background: $yellow;
+		padding: 20px;
+		color: $darkBlue;
+		position: relative;
+
+		cite {
+			margin-top: 10px;
+			font-weight: 600;
+			display: block;
+		}
+
+		a {
+			color: $darkBlue;
+		}
+
+		&:before {
+			content: "\f10d";
+			font: 5em FontAwesome;
+			position: absolute;
+			top: 8px;
+		    left: 15px;
+		    opacity: .08;
+		}
+
+		&:after {
+			content: "\f10e";
+			font: 5em FontAwesome;
+			position: absolute;
+			bottom: 8px;
+		    right: 15px;
+		    opacity: .08;
+		}
+	}
+
+	@include bp480 {
+		.top-img-wrap {
+			min-height: 320px;
+		}
+	}
+
+	@include bp600 {
+		.top-img-wrap {
+			min-height: 450px;
+		}
+	}
+
+	@include bp750 {
+
+		.top {
+			@include justify-content(space-between);
+		}
+
+		.fees {
+			width: calc(50% - 7px);
+		}
+	}
+
+	@include bp850 {
+		h2 span {
+			display: inline-block;
+		}
+
+		.top-img-wrap {
+			width: calc(45% - 15px);
+			min-height: 0;
+		}
+
+		.top-details {
+			width: calc(55% - 15px);
+			@include flexbox;
+			@include flex-wrap(wrap);
+			@include justify-content(space-between);
+			@include align-content(flex-start);
+		}
+
+		.quote {
+			margin-top: 0;
+		}
+
+		.find {
+			margin-top: 25px;
+		}
+
+		.slide-downs {
+			margin-top: 25px;
+		}
+	}
+
+	@include bp1000 {
+		width: 95%;
+		height: 90%;
+		left: 50%;
+		top: 100%;
+		bottom: 5%;
+		padding: 30px;
+		max-width: 1000px;
+		transform: translateX(-50%);
+
+		&.show {
+			visibility: visible;
+			top: 5%;
+		}
+
+		h2 {
+			margin-bottom: 25px;
+		}
+
+		.find {
+			@include order(2);
+			width: 100%;
+		}
+
+		.slide-downs {
+			@include flexbox;
+			@include flex-wrap(wrap);
+
+			> div {
+				width: 100%;
+				min-height: 150px;
+				padding: 25px;
+			}
+
+			> div:first-of-type {
+				display: block;
+			}
+		}
+
+		.slide-trigger {
+			@include order(-1);
+			padding: 10px 25px;
+			margin-right: 5px;
+			flex: auto;
+			text-align: center;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+
+			&:after {
+				content: "";
+			}
+
+			&.active {
+				background: $darkBlue;
+				color: $yellow;
+			}
+
+			&.active:after {
+				content: "";
+			}
+		}
+
+		.directions-wrap {
+			float: left;
+			width: 48.5%;
+			margin-right: 1.5%;
+		}
+
+		.address-wrap {
+			float: left;
+			width: 48.5%;
+			margin-left: 1.5%;
+		}
+
+		blockquote {
+			padding: 25px;
+		}
+	}
+}
+
+.map iframe{
+    pointer-events: none;
+}
+
+.overlay {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: rgba(#000, .7);
+	z-index: 1;
+	transition: .5s;
+	visibility: hidden;
+	opacity: 0;
+	cursor: pointer;
+
+	&:hover {
+		background-color: rgba(#000, .5);
+	}
+
+	&.show {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+.tp-info .directions-bar {
+	text-align: center;
+	margin-bottom: 20px;
+	@include flexbox;
+	@include flex-wrap(wrap);
+
+	.dist {
+		padding: 10px 15px;
+		background: $yellow;
+		font-size: .8em;
+
+		span {
+			font-size: 1.5em;
+			font-weight: 700;
+		}
+	}
+
+	.directions-btn {
+		background: $darkBlue;
+		color: #fff;
+		padding: 13px 12px;
+		font-size: .9em;
+		line-height: 1.5;
+		font-weight: 300;
+		text-transform: uppercase;
+		width: 100%;
+		margin-top: 5px;
+		color: #fff;
+		text-decoration: none;
+		display: block;
+
+		span {
+			color: $yellow;
+			font-weight: 500;
+		}
+
+			&:hover {
+				background: darken($darkBlue, 5%);
+				cursor: pointer;
+			}
+
+			i {
+				margin-left: 4px;
+			}
+	}
+
+	@include bp750 {
+		overflow: hidden;
+
+		.dist {
+			float: left;
+			width: 35%;
+		}
+
+		.directions-btn {
+			float: left;
+			width: 65%;
+			margin-top: 0;
+		}
+	}
+
+	@include bp1000 {
+		width: 100%;
+	}
+}
+
+
+
+.slider {
+	position: relative;
+	width: 100%;
+	@include flexbox;
+}
+
+.slider ul {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width: 100%;
+}
+
+.slider ul li {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	text-align: center;
+	line-height: 300px;
+	overflow: hidden;
+}
+
+.slider img {
+	height: auto;
+	max-width: 100%;
+
+	@media screen and (min-width: 850px) {
+	}
+}
+
+.control_prev, .control_next {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: $darkBlue;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.control_prev:hover, .control_next:hover {
+  opacity: 1;
+  -webkit-transition: .2s;
+}
+
+.control_prev {
+  border-radius: 0 2px 2px 0;
+}
+
+.control_next {
+  right: 0;
+  left: auto;
+  border-radius: 2px 0 0 2px;
+}
+
+.slider_option {
+  position: relative;
+  margin: 10px auto;
+  width: 160px;
+  font-size: 18px;
+}
+
+
+
+
+/*------------------------------------------------
+	SHARE BTNS
+-------------------------------------------------*/
+
+.share-btns {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 150;
+
+	a {
+		color: #fff;
+		text-decoration: none;
+		float: left;
+		width: 50%;
+		text-align: center;
+		font-size: 1.4em;
+		padding: 8px;
+	}
+
+	.fb { background: #3b5998; }
+	.fb:hover { background: lighten(#3b5998, 5%); }
+	.tweet { background: #00aced; }
+	.tweet:hover { background: lighten(#00aced, 5%); }
+
+	@include bp850 {
+		top: 120px;
+		right: 0;
+		left: auto;
+		bottom: auto;
+		width: auto;
+
+		a {
+			width: 50px;
+			font-size: 1.6em;
+		}
+
+		.tweet {
+			position: absolute;
+			right: 0;
+			top: 57px;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
